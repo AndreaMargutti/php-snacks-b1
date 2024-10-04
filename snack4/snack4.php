@@ -237,8 +237,9 @@ $classi = [
     ],
 ];
  
+//Creo l'array dove andranno inseriti gli studenti con il "voto_medio" >= 6
 $studentiMedi = [];
-
+// Ciclo per filtrare gli studenti, suddivisi per classi, secondo la media dei voti
 foreach ($classi as $key => $classe) {
     foreach($classe as $student) {
         if($student["voto_medio"] >= 6) {
