@@ -250,6 +250,24 @@ $classi = [
 
 <body>
     <h1>Snack 4</h1>
+    <main>
+        <?php foreach ($classi as $key => $classe) { ?>
+        <?php // var_dump($classe) ?>
+        <ul>
+            <h3 style="color: red"><?php echo $key ?></h3>
+            <?php foreach($classe as $student) { ?>
+            <li>
+                <h4><?= $student["nome"] . " " . $student["cognome"]?></h4>
+                <p>
+                    Età: <?= $student["anni"] ?>
+                    Voto Medio: <?= $student["voto_medio"] ?>
+                    Linguaggio Preferito: <?= $student["linguaggio_preferito"] ?>
+                </p>
+            </li>
+            <?php } ?>
+        </ul>
+        <?php } ?>
+    </main>
 </body>
 
 </html>
