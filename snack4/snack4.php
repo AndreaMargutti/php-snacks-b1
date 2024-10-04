@@ -239,14 +239,7 @@ $classi = [
  
 //Creo l'array dove andranno inseriti gli studenti con il "voto_medio" >= 6
 $studentiMedi = [];
-// Ciclo per filtrare gli studenti, suddivisi per classi, secondo la media dei voti
-foreach ($classi as $key => $classe) {
-    foreach($classe as $student) {
-        if($student["voto_medio"] >= 6) {
-            array_push($studentiMedi, $student);
-        }
-    }
-};
+    
 ?>
 
 <!DOCTYPE html>
@@ -272,11 +265,10 @@ foreach ($classi as $key => $classe) {
         </section>
         <!--Start of Student List-->
         <?php foreach ($classi as $key => $classe) { ?>
-        <?php // var_dump($classe) ?>
         <ul>
             <h3 style="color: red"><?php echo $key ?></h3>
-            <?php foreach($classe as $student) { ?>
-            <!-- <?php var_dump($classe) ?> -->
+            <?php foreach ($classe as $student) {
+                if($student["voto_medio"] <= 6) { ?>
             <li>
                 <h4><?= $student["nome"] . " " . $student["cognome"]?></h4>
                 <p>
@@ -285,6 +277,7 @@ foreach ($classi as $key => $classe) {
                     Linguaggio Preferito: <?= $student["linguaggio_preferito"] ?>
                 </p>
             </li>
+            <?php } ?>
             <?php } ?>
         </ul>
         <?php } ?>
