@@ -237,6 +237,15 @@ $classi = [
     ],
 ];
  
+$studentiMedi = [];
+
+foreach ($classi as $key => $classe) {
+    foreach($classe as $student) {
+        if($student["voto_medio"] >= 6) {
+            array_push($studentiMedi, $student);
+        }
+    }
+};
 ?>
 
 <!DOCTYPE html>
@@ -251,11 +260,22 @@ $classi = [
 <body>
     <h1>Snack 4</h1>
     <main>
+        <!--Start of form-->
+        <section>
+            <form action="./snack4.php" method="GET">
+                <label for="avarage">Inserisci il voto medio dello studente che ti interessa:</label>
+                <input type="number" id="avarage" name="avarage" placeholder="voto medio">
+                <button type="submit">Invia</button>
+                <button type="reset">Ripristina filtri</button>
+            </form>
+        </section>
+        <!--Start of Student List-->
         <?php foreach ($classi as $key => $classe) { ?>
         <?php // var_dump($classe) ?>
         <ul>
             <h3 style="color: red"><?php echo $key ?></h3>
             <?php foreach($classe as $student) { ?>
+            <!-- <?php var_dump($classe) ?> -->
             <li>
                 <h4><?= $student["nome"] . " " . $student["cognome"]?></h4>
                 <p>
@@ -267,6 +287,7 @@ $classi = [
             <?php } ?>
         </ul>
         <?php } ?>
+
     </main>
 </body>
 
