@@ -237,9 +237,9 @@ $classi = [
     ],
 ];
  
-//Creo l'array dove andranno inseriti gli studenti con il "voto_medio" >= 6
-$studentiMedi = [];
-    
+$maxVote = $_GET["avarage"];
+var_dump($maxVote);
+$studentVote = [];
 ?>
 
 <!DOCTYPE html>
@@ -268,8 +268,11 @@ $studentiMedi = [];
         <ul>
             <h3 style="color: red"><?php echo $key ?></h3>
             <?php foreach ($classe as $student) {
-                // # Controllo se il voto medio è minore o uguale a 6 per lo snack 4b (senza l'utilizzo del form);
-                // # if($student["voto_medio"] <= 6) { ?>
+                    // # Controllo se il voto medio è minore o uguale a 6 per lo snack 4b (senza l'utilizzo del form);
+                    // # if($student["voto_medio"] <= 6) { 
+                    if(isset($maxVote) && $student["voto_medio"] <= $maxVote){
+                        array_push($studentVote, $student);
+                    ?>
             <li>
                 <h4><?= $student["nome"] . " " . $student["cognome"]?></h4>
                 <p>
@@ -278,7 +281,7 @@ $studentiMedi = [];
                     Linguaggio Preferito: <?= $student["linguaggio_preferito"] ?>
                 </p>
             </li>
-            <?php // # } ?>
+            <?php } ?>
             <?php } ?>
         </ul>
         <?php } ?>
