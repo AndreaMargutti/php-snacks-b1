@@ -41,9 +41,8 @@ $db = [
 <body>
     <h1>Snack 3</h1>
     <main>
-        <div class="rectangle bg-success">
-            <?php foreach($db as $teacher) { ?>
-        </div>
+        <?php foreach($db as $teachers) { ?>
+
         <?php } ?>
     </main>
 </body>
