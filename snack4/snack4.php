@@ -239,7 +239,24 @@ $classi = [
  
 $maxVote = $_GET["avarage"];
 var_dump($maxVote);
-$studentVote = [];
+
+//filtro per voto medio
+if(isset($maxVote) && ($maxVote >= 1 && $maxVote <= 10)) {
+    $voteClass = [];
+
+    foreach($classi as $classKey => $singleClass){
+        $voteClass[$classKey] = [];
+
+        foreach($singleClass as $singleStudent){
+            
+            if($singleStudent["voto_medio"] <= $maxVote) {
+                $voteClass[$classKey][] = $singleStudent;
+            }
+        }
+    }
+} else {
+    $voteClass = $classi;
+};
 ?>
 
 <!DOCTYPE html>
@@ -264,24 +281,22 @@ $studentVote = [];
             </form>
         </section>
         <!--Start of Student List-->
-        <?php foreach ($classi as $key => $classe) { ?>
+        <?php foreach ($voteClass as $classKey => $singleClass) { ?>
         <ul>
-            <h3 style="color: red"><?php echo $key ?></h3>
-            <?php foreach ($classe as $student) {
+            <h3 style="color: red"><?php echo $classKey ?></h3>
+            <?php foreach ($singleClass as $singleStudent) {
                     // # Controllo se il voto medio è minore o uguale a 6 per lo snack 4b (senza l'utilizzo del form);
                     // # if($student["voto_medio"] <= 6) { 
-                    if(isset($maxVote) && $student["voto_medio"] <= $maxVote){
-                        array_push($studentVote, $student);
                     ?>
             <li>
-                <h4><?= $student["nome"] . " " . $student["cognome"]?></h4>
+                <h4><?= $singleStudent["nome"] . " " . $singleStudent["cognome"]?></h4>
                 <p>
-                    Età: <?= $student["anni"] ?>
-                    Voto Medio: <?= $student["voto_medio"] ?>
-                    Linguaggio Preferito: <?= $student["linguaggio_preferito"] ?>
+                    Età: <?= $singleStudent["anni"] ?>
+                    Voto Medio: <?= $singleStudent["voto_medio"] ?>
+                    Linguaggio Preferito: <?= $singleStudent["linguaggio_preferito"] ?>
                 </p>
             </li>
-            <?php } ?>
+            <?php // # } ?>
             <?php } ?>
         </ul>
         <?php } ?>
