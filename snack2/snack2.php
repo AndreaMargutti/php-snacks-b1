@@ -1,6 +1,7 @@
 <?php 
     $userName = $_GET["firstName"];
-    var_dump($userName);
+    $userMail = $_GET["mail"];
+    $userAge = $_GET["age"];
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +15,7 @@
 
 <body>
     <h1>Snack 2</h1>
-    <form action="snack2.php">
+    <form action="snack2.php" method="GET">
         <label for="name">Inserisci il tuo nome:</label>
         <input type="text" id="firstName" name="firstName" placeholder="name">
         <label for="name">Inserisci la tua mail:</label>
