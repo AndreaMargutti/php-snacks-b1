@@ -4,8 +4,11 @@
     $userAge = $_GET["age"];
     $message = "";
 
-    if(str_contains($userMail, "@") && is_int($userAge)) {
-        $message = "Accesso Riuscito";
+    var_dump($userAge, $userMail, $userName);
+
+    if($userName >= 3 && str_contains($userMail, "@") && str_contains($userMail, ".") && is_numeric($userAge)) {
+        var_dump("entro nel controllo");
+            $message = "Accesso Riuscito";
     } else {
         $message = "Accesso Negato";
     }
@@ -25,11 +28,15 @@
     <form action="snack2.php" method="GET">
         <label for="name">Inserisci il tuo nome:</label>
         <input type="text" id="firstName" name="firstName" placeholder="name">
+
         <label for="name">Inserisci la tua mail:</label>
         <input type="email" id="mail" name="mail" placeholder="mail">
+
         <label for="age">Inserisci la tua età:</label>
         <input type="number" id="age" name="age" placeholder="age">
+
         <button type="submit">Invia</button>
+        <button type="reset">Reset</button>
     </form>
     <h2><?= $message ?></h2>
 </body>
