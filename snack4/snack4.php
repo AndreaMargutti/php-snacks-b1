@@ -257,6 +257,10 @@ if(isset($maxVote) && ($maxVote >= 1 && $maxVote <= 10)) {
 } else {
     $voteClass = $classi;
 };
+
+//creo variabile per valore di input su linguaggi preferiti
+$favouriteLang = $_GET["favouriteLanguage"];
+var_dump($favouriteLang);
 ?>
 
 <!DOCTYPE html>
@@ -276,6 +280,8 @@ if(isset($maxVote) && ($maxVote >= 1 && $maxVote <= 10)) {
             <form action="./snack4.php" method="GET">
                 <label for="avarage">Inserisci il voto medio dello studente che ti interessa:</label>
                 <input type="number" id="avarage" name="avarage" placeholder="voto medio">
+                <label for="favouriteLanguage">Inserisci il linguaggio preferito:</label>
+                <input type="text" name="favouriteLanguage" id="favouriteLanguage" placeholder="linguaggio preferito">
                 <button type="submit">Invia</button>
                 <button type="reset">Ripristina filtri</button>
             </form>
